@@ -7,6 +7,9 @@ public class InventorySystem : MonoBehaviour
     public static InventorySystem instance;
     public List<ItemData> items;
 
+    public Transform itemContent;
+    public GameObject inventoryItem;
+
     private void Start()
     {
         instance = this;
@@ -27,6 +30,18 @@ public class InventorySystem : MonoBehaviour
         items.Remove(itemData);
     }
 
+    public void ListItems()
+    {
+        foreach (var item in items)
+        {
+            GameObject obj = Instantiate(inventoryItem, itemContent);
+            var itemName = obj.transform.Find("ItemName").GetComponent<TextMesh>();
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Sprite>();
+
+            itemName.text = item.displayName;
+            itemIcon = item.icon;
+        }
+    }
     //private Dictionary<InventoryItemData, InventoryItem> itemDictionary;
     //public List<InventoryItem> inventory { get; private set; }
 

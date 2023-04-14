@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -6,38 +7,77 @@ using UnityEngine;
 public abstract class MovingCharacter : MonoBehaviour
 {
     [SerializeField]
+    protected int health = 100;
+    [SerializeField]
+    protected int armor;
+
+    [SerializeField]
     protected Rigidbody2D rb;
     [SerializeField]
     protected float speed;
     [SerializeField]
-    protected int direction;
+    public int direction;
 
-    private void Update()
-    {
-        //horizontalInput = Input.GetAxisRaw("Horizontal");
-    }
+    [SerializeField]
+    protected Animator animator;
 
+    [SerializeField]
+    protected Weapon weapon;
+
+    public bool hit;
+
+    public bool dead;
+
+    public bool fightingMode;
+
+    public AISurrounding surrounding;
+
+    [SerializeField]
+    protected Collider2D bodyCollider;
+
+    [SerializeField]
+    protected CinemachineVirtualCamera vcam;
     private void FixedUpdate()
     {
-        MoveCharacter();
-        GetComponent<Animator>().SetFloat("Speed", rb.velocity.magnitude);
+        if(!hit)
+        {
+            MoveCharacter();
+            animator.SetFloat("Speed", rb.velocity.magnitude);
+        }
     }
 
     private void MoveCharacter()
     {
-        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+        if(!hit)
+            rb.velocity = new Vector2(direction * speed, rb.velocity.y);
         Flip();
     }
 
     private void Flip()
     {
-        if (rb.velocity.x > 0)
-        {
-            transform.localScale = new Vector3(-1, 1);
-        }
-        else if (rb.velocity.x < 0)
-        {
-            transform.localScale = new Vector3(1, 1);
-        }
+        if(!hit && !fightingMode)
+            if (rb.velocity.x > 0)
+            {
+                transform.localScale = new Vector3(-1, 1);
+            }
+            else if (rb.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1);
+            }
     }
+
+    public abstract void Attack();
+
+    public abstract void Shield();
+
+    public abstract void TakeDamage(int amount, Vector3 knockback);
+
+    protected void HitFalse()
+    {
+        hit = false;
+    }
+
+    public abstract void Die();
+
+    public abstract void Jump();
 }

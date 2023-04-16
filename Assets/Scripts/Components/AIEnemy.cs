@@ -16,7 +16,7 @@ public class AIEnemy : MonoBehaviour
     private State state;
     private void Start()
     {
-        AudioController.instance.DevelopmentPlay();
+        AudioController.instance.music[1].Play();
         state = State.Chasing;
         mc = GetComponent<MovingCharacter>();
         mc.fightingMode = true;

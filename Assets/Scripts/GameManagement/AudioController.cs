@@ -17,7 +17,7 @@ public class AudioController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
-            //DevelopmentPlay();
+            DevelopmentPlay();
         }
         else
         {

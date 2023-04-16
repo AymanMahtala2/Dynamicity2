@@ -53,6 +53,8 @@ public class Thief : MovingCharacter
         vcam.Priority = 1;
         PlayerController.instance.fightingMode = false;
         AudioController.instance.StopMusic();
+        AudioController.instance.music[0].Play();
+
         animator.SetTrigger("Die");
         dead = true;
         Destroy(GetComponent<AIEnemy>());

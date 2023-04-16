@@ -32,9 +32,9 @@ public class AudioController : MonoBehaviour
             music[0].Play();
         }
     }
-    public void StopMusic()
+    public void StopMusic(int i)
     {
-        music[0].Stop();
+        music[i].Stop();
     }
 
     public void PlaySFX(int index) //EXPLOSION SOUND NOT LICENSED 

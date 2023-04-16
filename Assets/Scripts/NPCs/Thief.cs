@@ -52,7 +52,7 @@ public class Thief : MovingCharacter
     {
         vcam.Priority = 1;
         PlayerController.instance.fightingMode = false;
-        AudioController.instance.StopMusic();
+        AudioController.instance.StopMusic(1);
         AudioController.instance.music[0].Play();
 
         animator.SetTrigger("Die");

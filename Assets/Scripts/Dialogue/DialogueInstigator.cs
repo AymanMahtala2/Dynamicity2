@@ -48,6 +48,7 @@ public class DialogueInstigator : MonoBehaviour
     private void OnDialogueEnd(Dialogue dialogue)
     {
         _DialogueChannel.RaiseDialogueEnd(dialogue);
+        vcam.Priority = 1;
     }
 
     private bool inRange;

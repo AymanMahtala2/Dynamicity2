@@ -930,6 +930,7 @@ MonoBehaviour:
   _ChoicesBoxTransform: {fileID: 741414163}
   _ChoiceControllerPrefab: {fileID: 6418612693520856233, guid: 9624214507c93e34094086a6215cf962, type: 3}
   _DialogueChannel: {fileID: 11400000, guid: c477a56d497dd714584062ec5dfd5020, type: 2}
+  vcam: {fileID: 1356828822}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -137.79074, y: 98.903656}
+  m_AnchoredPosition: {x: -137.79074, y: 118}
   m_SizeDelta: {x: -430.4542, y: -260.4065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &741414164
@@ -2409,7 +2410,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174481470}
-  m_LocalRotation: {x: -0.07477795, y: 0.031689934, z: 0.0023775697, w: 0.99669373}
+  m_LocalRotation: {x: -0.13605116, y: 0.031483218, z: 0.0043257554, w: 0.990192}
   m_LocalPosition: {x: 0.94345516, y: -2.9156737, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2785,7 +2786,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356828821}
-  m_LocalRotation: {x: -0.07477795, y: 0.031689968, z: 0.0023775722, w: 0.99669373}
+  m_LocalRotation: {x: -0.13605116, y: 0.031483218, z: 0.004325756, w: 0.990192}
   m_LocalPosition: {x: 0.94345516, y: -2.9156737, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

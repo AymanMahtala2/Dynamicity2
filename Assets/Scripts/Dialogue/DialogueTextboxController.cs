@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -67,7 +68,6 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
         {
             Destroy(child.gameObject);
         }
-        vcam.Priority = 1;
         gameObject.SetActive(false);
         
         _ChoicesBoxTransform.gameObject.SetActive(false);
@@ -82,6 +82,12 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
 
     public void Visit(ChoiceDialogueNode node)
     {
+        StartCoroutine(FadeChoicesIn(node));
+    }
+
+    private IEnumerator FadeChoicesIn(ChoiceDialogueNode node)
+    {
+        yield return new WaitForSeconds(2f);
         _ChoicesBoxTransform.gameObject.SetActive(true);
         int i = 0;
         foreach (DialogueChoice choice in node.Choices)
@@ -90,10 +96,6 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
             newChoice.Choice = choice;
             newChoice.gameObject.GetComponent<RectTransform>().position -= new Vector3(0, 35 * i);
             i++;
-            //if(i > 1)
-            //{
-            //    newChoice.gameObject.GetComponent<RectTransform>().position -= new Vector3(0, 35 * i);
-            //}
         }
     }
 }

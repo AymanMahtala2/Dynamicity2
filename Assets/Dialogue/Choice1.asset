@@ -22,3 +22,5 @@ MonoBehaviour:
   - _ChoicePreview: Isn't Lorin Village where they openly practice homosexuality?
       Yeah, I'll pass.
     _ChoiceNode: {fileID: 11400000, guid: ca15455426fd185469f1af07f2f6864c, type: 2}
+  - _ChoicePreview: A village about to be massacred? It's looting time, baby!
+    _ChoiceNode: {fileID: 11400000, guid: ca15455426fd185469f1af07f2f6864c, type: 2}

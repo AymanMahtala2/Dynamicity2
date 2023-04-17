@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -32,14 +34,21 @@ public class InventorySystem : MonoBehaviour
 
     public void ListItems()
     {
+        foreach (Transform item in itemContent)
+        {
+            Destroy(item.gameObject);
+        }
+
         foreach (var item in items)
         {
+            //Creates new itemObject into intemcontent parent
             GameObject obj = Instantiate(inventoryItem, itemContent);
-            var itemName = obj.transform.Find("ItemName").GetComponent<TextMesh>();
-            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Sprite>();
+            var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
 
+            Debug.Log(item.icon);
             itemName.text = item.displayName;
-            itemIcon = item.icon;
+            itemIcon.sprite = item.icon;
         }
     }
     //private Dictionary<InventoryItemData, InventoryItem> itemDictionary;

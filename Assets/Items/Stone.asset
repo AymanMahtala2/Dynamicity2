@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85032a61e5648f04e96bf2620f80f2e6, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  id: anvil
-  displayName: Anvil
-  icon: {fileID: 21300134, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  id: stone
+  displayName: Stone
+  icon: {fileID: 21300138, guid: 7810966f0f690954c87305933cabf2b0, type: 3}

@@ -24,6 +24,14 @@ public class InventorySystem : MonoBehaviour
 
     public void Add(ItemData itemData)
     {
+        foreach (ItemData item in items)
+        {
+            if (itemData == item)
+            {
+                item.amount++;
+                return;
+            }
+        }
         items.Add(itemData);
     }
 
@@ -45,9 +53,11 @@ public class InventorySystem : MonoBehaviour
             GameObject obj = Instantiate(inventoryItem, itemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            var itemAmount = obj.transform.Find("ItemAmount").GetComponent<TextMeshProUGUI>();
 
             itemName.text = item.displayName;
             itemIcon.sprite = item.icon;
+            itemAmount.text = item.amount.ToString();
         }
     }
     //private Dictionary<InventoryItemData, InventoryItem> itemDictionary;

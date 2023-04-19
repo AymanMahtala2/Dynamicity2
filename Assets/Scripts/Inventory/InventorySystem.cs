@@ -32,6 +32,7 @@ public class InventorySystem : MonoBehaviour
                 return;
             }
         }
+        itemData.amount = 1;
         items.Add(itemData);
     }
 
@@ -60,17 +61,4 @@ public class InventorySystem : MonoBehaviour
             itemAmount.text = item.amount.ToString();
         }
     }
-    //private Dictionary<InventoryItemData, InventoryItem> itemDictionary;
-    //public List<InventoryItem> inventory { get; private set; }
-
-    //private void Awake()
-    //{
-    //    inventory = new List<InventoryItem>();
-    //    itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
-    //}
-
-    //private void Update()
-    //{
-
-    //}
 }

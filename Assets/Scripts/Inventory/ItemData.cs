@@ -7,6 +7,5 @@ public class ItemData : ScriptableObject
 {
     public string displayName;
     public Sprite icon;
-    public int amount = 1;
-    //public GameObject prefab;
+    public int amount;
 }

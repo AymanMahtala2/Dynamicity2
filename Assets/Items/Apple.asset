@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85032a61e5648f04e96bf2620f80f2e6, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  displayName: 
-  icon: {fileID: 0}
+  displayName: Apple
+  icon: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85032a61e5648f04e96bf2620f80f2e6, type: 3}
   m_Name: PotionRed
   m_EditorClassIdentifier: 
-  displayName: Potion
+  displayName: Red Potion
   icon: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}

@@ -18,6 +18,9 @@ public abstract class MovingCharacter : MonoBehaviour
     [SerializeField]
     public int direction;
 
+    public int stamina = 50;
+    protected bool blocking;
+
     [SerializeField]
     protected Animator animator;
 

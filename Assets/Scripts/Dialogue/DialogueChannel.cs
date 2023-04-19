@@ -17,6 +17,7 @@ public class DialogueChannel : ScriptableObject
 
     public void RaiseRequestDialogue(Dialogue dialogue)
     {
+        
         OnDialogueRequested?.Invoke(dialogue);
     }
 

@@ -23,4 +23,4 @@ MonoBehaviour:
       Yeah, I'll pass.
     _ChoiceNode: {fileID: 11400000, guid: ca15455426fd185469f1af07f2f6864c, type: 2}
   - _ChoicePreview: A village about to be massacred? It's looting time, baby!
-    _ChoiceNode: {fileID: 11400000, guid: ca15455426fd185469f1af07f2f6864c, type: 2}
+    _ChoiceNode: {fileID: 11400000, guid: 481fce141cfc88440994427aa0a31b0e, type: 2}

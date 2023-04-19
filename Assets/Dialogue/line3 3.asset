@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbd48339c494af46a64316ab8271310, type: 3}
   m_Name: line3 3
   m_EditorClassIdentifier: 
-  _Speaker: {fileID: 0}
-  _Text: 
+  _Speaker: {fileID: 11400000, guid: ce6796c50115d804caf7cb261174e130, type: 2}
+  _Text: Oh no, not another one!

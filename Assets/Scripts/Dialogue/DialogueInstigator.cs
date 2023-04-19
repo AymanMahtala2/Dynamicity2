@@ -42,12 +42,15 @@ public class DialogueInstigator : MonoBehaviour
 
     private void OnDialogueStart(Dialogue dialogue)
     {
+        PlayerInput.instance.canAttack = false;
+        vcam.Priority = 12;
         _DialogueChannel.RaiseDialogueStart(dialogue);
     }
 
     private void OnDialogueEnd(Dialogue dialogue)
     {
         _DialogueChannel.RaiseDialogueEnd(dialogue);
+        PlayerInput.instance.canAttack = true;
         vcam.Priority = 1;
     }
 
@@ -67,7 +70,6 @@ public class DialogueInstigator : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.V))
             {
-                vcam.Priority = 12;
                 _DialogueChannel.RaiseRequestDialogue(dialogue);
             }
         }

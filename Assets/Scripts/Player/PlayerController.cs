@@ -13,6 +13,9 @@ public class PlayerController : MovingCharacter
     private float horizontalInput;
 
     public List<MovingCharacter> enemiesToFight;
+
+
+    //hier een variabele met de inventory system
     public override void Attack()
     {
         animator.SetTrigger("Attack");
@@ -23,32 +26,52 @@ public class PlayerController : MovingCharacter
     public override void Shield()
     {
         animator.SetBool("Defend", true);
+        blocking = true;
     }
 
     public void LowerShield()
     {
         animator.SetBool("Defend", false);
+        blocking = false;
     }
 
     public override void TakeDamage(int amount, Vector3 knockback)
     {
+        if(blocking)
+        {
+            stamina -= amount;
 
-        health -= amount;
-        if (health <= 0)
+            if(stamina <= 0)
+            {
+                //stunned for 2 seconds
+            } else
+            {
+                AudioController.instance.PlaySFX(4);
+                rb.velocity = Vector2.zero;
+                PlayerInput.instance.CannotMoveOrAttack(0.75f);
+                rb.AddForce(Vector2.left * 100, ForceMode2D.Impulse);
+                Debug.Log("blocked");
+            }
+        } else
         {
-            Die();
-        }
-        else
-        {
-            animator.SetTrigger("Hit");
-            hit = true;
-            rb.velocity = Vector2.zero;
-            rb.AddForce(knockback, ForceMode2D.Impulse);
-            Invoke("HitFalse", 0.5f);
+            health -= amount;
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                animator.SetTrigger("Hit");
+                AudioController.instance.PlaySFX(3);
+                hit = true;
+                rb.velocity = Vector2.zero;
+                rb.AddForce(knockback, ForceMode2D.Impulse);
+                BattleManager.instance.HitConnected();
+                Invoke("HitFalse", 0.5f);
+                PlayerInput.instance.CannotMoveOrAttack(0.75f);
+            }
         }
     }
-
-
 
     private void Start()
     {

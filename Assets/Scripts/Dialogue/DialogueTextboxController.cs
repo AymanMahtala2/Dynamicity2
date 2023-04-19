@@ -94,7 +94,7 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
         {
             DialogueChoiceController newChoice = Instantiate(_ChoiceControllerPrefab, _ChoicesBoxTransform);
             newChoice.Choice = choice;
-            newChoice.gameObject.GetComponent<RectTransform>().position -= new Vector3(0, 35 * i);
+            newChoice.gameObject.GetComponent<RectTransform>().position -= new Vector3(0, 135 * i);
             i++;
         }
     }

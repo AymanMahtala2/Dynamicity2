@@ -21,6 +21,7 @@ public class AIEnemy : MonoBehaviour
         state = State.Chasing;
         mc = GetComponent<MovingCharacter>();
         mc.fightingMode = true;
+        BattleManager.instance.currentEnemy = mc;
         StartCoroutine(AttackPattern());
         StartCoroutine(MovePattern());
     }
@@ -47,7 +48,7 @@ public class AIEnemy : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
             } else if(state == State.Fighting)
             {
-                yield return new WaitForSeconds(Random.Range(0, 2.5f));
+                yield return new WaitForSeconds(Random.Range(0, 0.5f));
                 int i = Random.Range(-1, 2);
                 mc.direction = i;
             }
@@ -70,14 +71,14 @@ public class AIEnemy : MonoBehaviour
             {
                 mc.Attack();
             }
-            yield return new WaitForSeconds(Random.Range(0.75f, 2));
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.25f));
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "PlayerBody")
         {
             inAttackRange = true;
         }
@@ -85,7 +86,7 @@ public class AIEnemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "PlayerBody")
         {
             inAttackRange = false;
         }
@@ -94,6 +95,7 @@ public class AIEnemy : MonoBehaviour
     public enum State
     {
         Chasing,
-        Fighting
+        Fighting,
+        Tactical
     }
 }

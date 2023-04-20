@@ -10,10 +10,16 @@ public class InventoryItem : MonoBehaviour
     {
         this.itemData = itemData;
     }
-    public void DoSomething()
-    {
-        //InventorySystem.instance
 
-        Debug.Log(itemData);
+    public void UseItem()
+    {
+        switch (itemData.itemType)
+        {
+            case ItemData.ItemType.Potion:
+                Debug.Log("issa potion with value: " + itemData.value);
+                break;
+            default:
+                break;
+        }
     }
 }

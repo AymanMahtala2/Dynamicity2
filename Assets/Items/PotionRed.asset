@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: PotionRed
   m_EditorClassIdentifier: 
   displayName: Red Potion
+  amount: 1
+  value: 50
+  itemType: 1
   icon: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}

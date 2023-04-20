@@ -6,6 +6,15 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public string displayName;
-    public Sprite icon;
     public int amount;
+    public int value;
+    public ItemType itemType;
+    public Sprite icon;
+
+    public enum ItemType
+    {
+        Default,
+        Potion
+    }
+
 }

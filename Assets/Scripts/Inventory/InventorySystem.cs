@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class InventorySystem : MonoBehaviour
 {
     public static InventorySystem instance;
-    public List<ItemData> items;
+    public List<ItemData> itemsData;
 
     public Transform itemContent;
     public GameObject inventoryItem;
+
+    public InventoryItem[] inventoryItems;
 
     private void Start()
     {
@@ -24,7 +26,7 @@ public class InventorySystem : MonoBehaviour
 
     public void Add(ItemData itemData)
     {
-        foreach (ItemData item in items)
+        foreach (ItemData item in itemsData)
         {
             if (itemData == item)
             {
@@ -33,12 +35,12 @@ public class InventorySystem : MonoBehaviour
             }
         }
         itemData.amount = 1;
-        items.Add(itemData);
+        itemsData.Add(itemData);
     }
 
     public void Remove(ItemData itemData)
     {
-        items.Remove(itemData);
+        itemsData.Remove(itemData);
     }
 
     public void ListItems()
@@ -48,9 +50,9 @@ public class InventorySystem : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        foreach (var item in items)
+        foreach (var item in itemsData)
         {
-            //Creates new itemObject into intemcontent parent
+            //Creates new itemObject into itemcontent parent
             GameObject obj = Instantiate(inventoryItem, itemContent);
             var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
@@ -59,6 +61,26 @@ public class InventorySystem : MonoBehaviour
             itemName.text = item.displayName;
             itemIcon.sprite = item.icon;
             itemAmount.text = item.amount.ToString();
+        }
+
+        SetInventoryItems();
+    }
+
+    public void SetInventoryItems()
+    {
+        inventoryItems = itemContent.GetComponentsInChildren<InventoryItem>();
+
+        for (int i = 0; i < itemsData.Count; i++)
+        {
+            inventoryItems[i].AddItem(itemsData[i]);
+        }
+    }
+
+    public void Clean()
+    {
+        foreach (Transform item in itemContent)
+        {
+            Destroy(item.gameObject);
         }
     }
 }

@@ -17,6 +17,9 @@ public class PlayerInput : MonoBehaviour
             if (!inventoryObject.activeSelf)
             {
                 inventorySystem.ListItems();
+            } else
+            {
+                inventorySystem.Clean();
             }
             inventoryObject.SetActive(!inventoryObject.activeSelf);
         }

@@ -43,6 +43,10 @@ public class PlayerInput : MonoBehaviour
         {
             PlayerController.instance.Jump();
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            PlayerController.instance.OpenInventory();
+        }
     }
 
     public void CannotMoveOrAttack()
@@ -62,10 +66,5 @@ public class PlayerInput : MonoBehaviour
     {
         canMove = true;
         canAttack = true;
-    }
-
-    public void TriggerAttack()
-    {
-
     }
 }

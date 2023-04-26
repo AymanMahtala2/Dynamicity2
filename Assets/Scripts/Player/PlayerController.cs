@@ -8,12 +8,15 @@ using UnityEngine.SceneManagement;
 public class PlayerController : Character
 {
     public static PlayerController instance;
-    //hier een variabele met de inventory system
-
 
     private void Start()
     {
         instance = this;
+    }
+
+    public void OpenInventory()
+    {
+
     }
 
     public override void Die()

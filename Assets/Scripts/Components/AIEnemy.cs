@@ -6,72 +6,28 @@ using UnityEngine.UIElements;
 
 public class AIEnemy : MonoBehaviour
 {
-    private MovingCharacter mc;
-    public bool isShielding;
+    private Character character;
 
-    public bool isFighting;
-    private bool inAttackRange;
-    private bool inFightingRange;
-    [SerializeField]
-    private State state;
     private void Start()
     {
-        AudioController.instance.StopMusic(0);
-        AudioController.instance.music[1].Play();
-        state = State.Chasing;
-        mc = GetComponent<MovingCharacter>();
-        mc.fightingMode = true;
-        BattleManager.instance.currentEnemy = mc;
+        character = GetComponent<Character>();
+        BattleManager.instance.AddToListOfEnemies(this);
         StartCoroutine(AttackPattern());
         StartCoroutine(MovePattern());
     }
 
     private IEnumerator MovePattern()
     {
-        while(true)
-        {
-            if(state == State.Chasing)
-            {
-                if (PlayerController.instance.transform.position.x > mc.transform.position.x)
-                {
-                    mc.direction = 1;
-                }
-                else
-                {
-                    mc.direction = -1;
-                }
-
-                if(inAttackRange)
-                {
-                    state = State.Fighting;
-                }
-                yield return new WaitForSeconds(0.2f);
-            } else if(state == State.Fighting)
-            {
-                yield return new WaitForSeconds(Random.Range(0, 0.5f));
-                int i = Random.Range(-1, 2);
-                mc.direction = i;
-            }
-        }
+        yield return new WaitForSeconds(Random.Range(0, 0.5f));
+        //character.direction = -1;
 
     }
     private IEnumerator AttackPattern()
     {
-        //while (true)
-        //{
-        //    if (inAttackRange)
-        //    {
-        //        mc.Attack();
-        //        yield return new WaitForSeconds(1);
-        //    }
-        //}
         while(true)
         {
-            if(inAttackRange)
-            {
-                mc.Attack();
-            }
-            yield return new WaitForSeconds(Random.Range(0.5f, 1.25f));
+            character.Attack();
+            yield return new WaitForSeconds(Random.Range(1.5f, 3f));
         }
 
     }
@@ -80,7 +36,7 @@ public class AIEnemy : MonoBehaviour
     {
         if(collision.tag == "PlayerBody")
         {
-            inAttackRange = true;
+            //inAttackRange = true;
         }
     }
 
@@ -88,7 +44,7 @@ public class AIEnemy : MonoBehaviour
     {
         if (collision.tag == "PlayerBody")
         {
-            inAttackRange = false;
+            //inAttackRange = false;
         }
     }
 

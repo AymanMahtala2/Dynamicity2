@@ -35,6 +35,10 @@ public class PlayerInput : MonoBehaviour
         {
             PlayerController.instance.LowerShield();
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PlayerController.instance.Talk();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerController.instance.Jump();

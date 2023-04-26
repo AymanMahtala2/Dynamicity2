@@ -8,7 +8,29 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected float knockback;
     [SerializeField]
-    protected new Collider2D collider;
+    public new Collider2D collider;
 
-    public abstract void Attack();
+    [SerializeField]
+    protected float EnableTimer;
+    [SerializeField]
+    protected float DisableTimer;
+    public virtual void Attack()
+    {
+        StartCoroutine(Colliding());
+    }
+    protected IEnumerator Colliding()
+    {
+        yield return new WaitForSeconds(EnableTimer);
+        collider.enabled = true;
+        yield return new WaitForSeconds(DisableTimer);
+        collider.enabled = false;
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<Character>() != null)
+        {
+            collision.GetComponent<Character>().TakeDamage(attackPower, knockback);
+        }
+    }
 }

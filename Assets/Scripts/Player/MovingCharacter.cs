@@ -1,7 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public abstract class MovingCharacter : MonoBehaviour
@@ -21,11 +18,10 @@ public abstract class MovingCharacter : MonoBehaviour
     public int stamina = 50;
     protected bool blocking;
 
-    [SerializeField]
-    protected Animator animator;
+    public Animator animator;
 
     [SerializeField]
-    protected Weapon weapon;
+    public Weapon weapon;
 
     public bool hit;
 
@@ -38,8 +34,7 @@ public abstract class MovingCharacter : MonoBehaviour
     [SerializeField]
     protected Collider2D bodyCollider;
 
-    [SerializeField]
-    protected CinemachineVirtualCamera vcam;
+
     private void FixedUpdate()
     {
         if(!hit)

@@ -42,6 +42,7 @@ public class DialogueInstigator : MonoBehaviour
 
     private void OnDialogueStart(Dialogue dialogue)
     {
+        DialogueManager.instance.StartDialogue(transform);
         PlayerInput.instance.canAttack = false;
         vcam.Priority = 12;
         _DialogueChannel.RaiseDialogueStart(dialogue);
@@ -51,27 +52,34 @@ public class DialogueInstigator : MonoBehaviour
     {
         _DialogueChannel.RaiseDialogueEnd(dialogue);
         PlayerInput.instance.canAttack = true;
+        DialogueManager.instance.StopDialogue(transform);
         vcam.Priority = 1;
     }
 
-    private bool inRange;
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            inRange = true;
-        }
-    }
+    //private bool inRange;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Player")
+    //    {
+    //        inRange = true;
+    //    }
+    //}
     [SerializeField]
     private CinemachineVirtualCamera vcam;
-    private void Update()
+
+    public void StartTalking()
     {
-        if (inRange)
-        {
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                _DialogueChannel.RaiseRequestDialogue(dialogue);
-            }
-        }
+        _DialogueChannel.RaiseRequestDialogue(dialogue);
     }
+    
+    //private void Update()
+    //{
+    //    if (inRange)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.E))
+    //        {
+    //            _DialogueChannel.RaiseRequestDialogue(dialogue);
+    //        }
+    //    }
+    //}
 }

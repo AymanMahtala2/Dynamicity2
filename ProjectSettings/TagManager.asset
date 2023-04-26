@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Body
   - PlayerBody
+  - Shield
+  - NPC
+  - Dialogue
   layers:
   - Default
   - TransparentFX

@@ -24,6 +24,17 @@ public class AudioController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void PlayMusic(int i)
+    {
+        foreach(AudioSource a in music)
+        {
+            if(a.isPlaying)
+            {
+                a.Stop();
+            }
+        }
+        music[i].Play();
+    }
 
     public void DevelopmentPlay()
     {

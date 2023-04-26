@@ -8,7 +8,8 @@ public class ItemObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Pickup();
+        if(collision.tag == "Player")
+            Pickup();
     }
 
     void Pickup()

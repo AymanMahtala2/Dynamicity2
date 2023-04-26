@@ -9,6 +9,8 @@ public class PlayerController : Character
 {
     public static PlayerController instance;
 
+    public GameObject inventory;
+
     private void Start()
     {
         instance = this;
@@ -16,7 +18,16 @@ public class PlayerController : Character
 
     public void OpenInventory()
     {
-
+        if(!inventory.activeSelf)
+        {
+            InventorySystem.instance.ListItems();
+            PlayerInput.instance.CannotMoveOrAttack();
+        } else
+        {
+            InventorySystem.instance.Clean();
+            PlayerInput.instance.CanMoveOrAttack();
+        }
+        inventory.SetActive(!inventory.activeSelf);
     }
 
     public override void Die()

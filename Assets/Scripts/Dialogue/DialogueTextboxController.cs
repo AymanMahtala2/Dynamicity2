@@ -102,6 +102,10 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
     private IEnumerator FadeChoicesIn(ChoiceDialogueNode node)
     {
         yield return new WaitForSeconds(2f);
+        if(leftOfPlayer)
+        {
+            _ChoicesBoxTransform.position = new Vector3(1400, 750);
+        }
         _ChoicesBoxTransform.gameObject.SetActive(true);
         int i = 0;
         foreach (DialogueChoice choice in node.Choices)

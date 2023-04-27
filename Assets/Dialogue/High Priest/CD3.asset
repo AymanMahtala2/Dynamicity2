@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe3b109d944e7244a9efb8888241a43, type: 3}
+  m_Name: CD3
+  m_EditorClassIdentifier: 
+  _DialogueLine: {fileID: 11400000, guid: 227753a5eda03864bbbf8d6337e8f7fa, type: 2}
+  _Choices:
+  - _ChoicePreview: I will, High Priest.
+    _ChoiceNode: {fileID: 11400000, guid: af0504301cf4e004c9f3217daf9ac936, type: 2}
+  - _ChoicePreview: Whatever, smell ya later.
+    _ChoiceNode: {fileID: 11400000, guid: dd34760aa3af4104697bc216c405bd7e, type: 2}
+  - _ChoicePreview: Finally, about time someone massacred the morons of this village.
+    _ChoiceNode: {fileID: 11400000, guid: e89e71d3470c41b498667d1027f3b0ec, type: 2}

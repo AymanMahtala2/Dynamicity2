@@ -14,6 +14,11 @@ public class DialogueInstigator : MonoBehaviour
     [SerializeField]
     private Dialogue dialogue;
 
+    public bool startsImmediately;
+
+    [SerializeField]
+    private Character character;
+
     private void Awake()
     {
         _DialogueSequencer = new DialogueSequencer();
@@ -43,7 +48,7 @@ public class DialogueInstigator : MonoBehaviour
     private void OnDialogueStart(Dialogue dialogue)
     {
         DialogueManager.instance.StartDialogue(transform);
-        PlayerInput.instance.canAttack = false;
+        PlayerInput.instance.CannotMoveOrAttack();
         vcam.Priority = 12;
         _DialogueChannel.RaiseDialogueStart(dialogue);
     }
@@ -51,7 +56,7 @@ public class DialogueInstigator : MonoBehaviour
     private void OnDialogueEnd(Dialogue dialogue)
     {
         _DialogueChannel.RaiseDialogueEnd(dialogue);
-        PlayerInput.instance.canAttack = true;
+        PlayerInput.instance.CanMoveOrAttack();
         DialogueManager.instance.StopDialogue(transform);
         vcam.Priority = 1;
     }

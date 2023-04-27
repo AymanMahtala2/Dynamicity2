@@ -11,6 +11,8 @@ public class PlayerController : Character
 
     public GameObject inventory;
 
+    public string playerName = "Ayman";
+
     private void Start()
     {
         instance = this;
@@ -60,6 +62,6 @@ public class PlayerController : Character
 
     public void Jump()
     {
-
+        rb.AddForce(new Vector2(0, 25), ForceMode2D.Impulse);
     }
 }

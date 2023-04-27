@@ -9,6 +9,10 @@ public class DialogueStarter : MonoBehaviour
         if(collision.tag == "Dialogue")
         {
             PlayerController.instance.di = collision.GetComponent<DialogueInstigator>();
+            if(PlayerController.instance.di.startsImmediately)
+            {
+                PlayerController.instance.Talk();
+            }
         }
     }
 

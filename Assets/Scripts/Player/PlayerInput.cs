@@ -53,6 +53,7 @@ public class PlayerInput : MonoBehaviour
     {
         canMove = false;
         canAttack = false;
+        horizontalInput = 0;
     }
 
     public void CannotMoveOrAttack(float time)

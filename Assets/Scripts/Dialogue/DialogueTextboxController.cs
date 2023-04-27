@@ -24,6 +24,8 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
     private bool _ListenToInput = false;
     private DialogueNode _NextNode = null;
 
+    public bool leftOfPlayer; //determines where the textbox pops up
+
     private void Awake()
     {
         _DialogueChannel.OnDialogueNodeStart += OnDialogueNodeStart;
@@ -49,9 +51,21 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
 
     private void OnDialogueNodeStart(DialogueNode node)
     {
+        if(leftOfPlayer)
+        {
+            transform.position = new Vector3(400, 850);
+        }
         gameObject.SetActive(true);
 
-        _DialogueText.text = node.DialogueLine.Text;
+        if(node.DialogueLine.Text.Contains("*name*"))
+        {
+            string textWithName = node.DialogueLine.Text.Replace("*name*", PlayerController.instance.playerName);
+            _DialogueText.text = textWithName;
+        } else
+        {
+            _DialogueText.text = node.DialogueLine.Text;
+        }
+
         _SpeakerText.text = node.DialogueLine.Speaker.CharacterName;
 
         node.Accept(this);

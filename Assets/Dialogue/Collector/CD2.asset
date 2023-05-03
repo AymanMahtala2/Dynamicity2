@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe3b109d944e7244a9efb8888241a43, type: 3}
+  m_Name: CD2
+  m_EditorClassIdentifier: 
+  _DialogueLine: {fileID: 11400000, guid: 60a57961f6ca97543bc2143bd9d07cbd, type: 2}
+  _Choices:
+  - _ChoicePreview: I will consider it. Thanks.
+    _ChoiceNode: {fileID: 11400000, guid: 58ec765035543584d9eb6c13722a0be4, type: 2}
+  - _ChoicePreview: Can you tell me more about Seron?
+    _ChoiceNode: {fileID: 11400000, guid: 58ec765035543584d9eb6c13722a0be4, type: 2}
+  - _ChoicePreview: I'm looking for someone name Rendall. Do you know him?
+    _ChoiceNode: {fileID: 11400000, guid: 58ec765035543584d9eb6c13722a0be4, type: 2}
+  - _ChoicePreview: I'm here for two seconds and you're already asking for money?
+      Nice fucking welcome.
+    _ChoiceNode: {fileID: 11400000, guid: 58ec765035543584d9eb6c13722a0be4, type: 2}

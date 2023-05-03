@@ -10,6 +10,8 @@ public class AudioController : MonoBehaviour
     public AudioSource[] sfx;
 
     public bool alreadyStarted;
+    [SerializeField]
+    private int whichAmbientToPlay;
 
     void Start()
     {
@@ -38,9 +40,9 @@ public class AudioController : MonoBehaviour
 
     public void DevelopmentPlay()
     {
-        if (!music[0].isPlaying)
+        if (!music[whichAmbientToPlay].isPlaying)
         {
-            music[0].Play();
+            music[whichAmbientToPlay].Play();
         }
     }
     public void StopMusic(int i)

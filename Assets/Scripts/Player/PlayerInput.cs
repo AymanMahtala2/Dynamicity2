@@ -23,6 +23,10 @@ public class PlayerInput : MonoBehaviour
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
         }
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            PlayerController.instance.Transport();
+        }
         if (Input.GetMouseButtonDown(0) && canAttack)
         {
             PlayerController.instance.Attack();

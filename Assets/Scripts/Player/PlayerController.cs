@@ -13,9 +13,11 @@ public class PlayerController : Character
 
     public string playerName = "Ayman";
 
+    public VectorValue startingPosition;
     private void Start()
     {
         instance = this;
+        transform.position = startingPosition.initialValue;
     }
 
     public void OpenInventory()
@@ -63,5 +65,14 @@ public class PlayerController : Character
     public void Jump()
     {
         rb.AddForce(new Vector2(0, 25), ForceMode2D.Impulse);
+    }
+
+    public int sceneBuildIndex = 999;
+    public void Transport()
+    {
+        if(sceneBuildIndex != 999)
+        {
+            SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
+        }
     }
 }

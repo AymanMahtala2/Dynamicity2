@@ -32,5 +32,9 @@ public abstract class Weapon : MonoBehaviour
         {
             collision.GetComponent<Character>().TakeDamage(attackPower, knockback);
         }
+        else if (collision.GetComponent<DestructibleObject>() != null)
+        {
+            collision.GetComponent<DestructibleObject>().GetHit();
+        }
     }
 }

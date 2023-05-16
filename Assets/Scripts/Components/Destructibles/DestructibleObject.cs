@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructibleObject : MonoBehaviour
+public abstract class DestructibleObject : MonoBehaviour
 {
-    private float speed = 23f; //how fast it shakes
-    private float amount = 0.08f; //how much it shakes
+    protected float speed;
+    protected float amount;
     private bool isShaking = false;
     private float xPos;
+    protected string kanker;
 
-    public void GetHit()
+
+    //public abstract void GetHit();
+    public virtual void GetHit()
+    {
+        this.Animate();        
+    }
+
+    public virtual void Animate()
     {
         if (!isShaking)
         {
-            Debug.Log("tree is hit");
+            Debug.Log("object is hit");
             xPos = transform.position.x;
             amount = 0.08f;
         }
@@ -24,6 +32,7 @@ public class DestructibleObject : MonoBehaviour
     {
         if (isShaking)
         {
+            //Debug.Log("speed: " + speed);
             float xVal = xPos + Mathf.Sin(Time.time * speed) * amount;
             amount = amount / 1.001f;
 

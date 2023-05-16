@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class Tree : DestructibleObject
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        speed = 23f; //how fast it shakes
+        amount = 0.08f; //how much it shakes
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void GetHit()
     {
-        
+        Debug.Log("kankerzooi");
     }
-}
+}   

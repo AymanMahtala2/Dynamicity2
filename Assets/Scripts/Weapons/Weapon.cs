@@ -34,7 +34,7 @@ public abstract class Weapon : MonoBehaviour
         }
         else if (collision.GetComponent<DestructibleObject>() != null)
         {
-            collision.GetComponent<DestructibleObject>().GetHit();
+            collision.GetComponent<DestructibleObject>().Collide(attackPower);
         }
     }
 }

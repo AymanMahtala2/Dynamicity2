@@ -4,15 +4,16 @@ using UnityEngine;
 
 public abstract class DestructibleObject : MonoBehaviour
 {
+    public int health;
+
     protected float speed;
     protected float amount;
-    protected int health;
 
     private bool isHit = false;
-    private float xPos;
+    private bool isAnimating = false;
+    protected float xPos;
 
 
-    //public abstract void GetHit();
     public void Collide(int attackPower)
     {
         if (!isHit)
@@ -24,19 +25,33 @@ public abstract class DestructibleObject : MonoBehaviour
 
     public virtual void GetHit(int attackPower)
     {
-        Debug.Log("attackPower: " + attackPower);
-        this.Animate();
+        health = health - attackPower;
+        Debug.Log("health: " + health);
+        if (health <= 0)
+        {
+            Die();
+        } else
+        {
+            this.Animate();
+        }
+    }
+
+    public virtual void Die()
+    {
+        Debug.Log("dead");
+        GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(this);
     }
 
     public virtual void Animate()
     {
         xPos = transform.position.x;
-        amount = 0.08f;
+        isAnimating = true;
     }
 
     public void Update()
     {
-        if (isHit)
+        if (isAnimating)
         {
             float xVal = xPos + Mathf.Sin(Time.time * speed) * amount;
             amount = amount / 1.001f;
@@ -45,6 +60,7 @@ public abstract class DestructibleObject : MonoBehaviour
             {
                 transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
                 isHit = false;
+                isAnimating = false;
             }
             transform.position = new Vector3(xVal, transform.position.y, transform.position.z); 
         }

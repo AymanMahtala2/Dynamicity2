@@ -16,7 +16,7 @@ public class Chest : DestructibleObject
     {
         Debug.Log("open itt");
         
-        animator.SetTrigger("OpenIt");
+        animator.SetBool("OpenIt", true);
         //animator.ResetTrigger("OpenIt");
 
         //base.GetHit(attackPower);

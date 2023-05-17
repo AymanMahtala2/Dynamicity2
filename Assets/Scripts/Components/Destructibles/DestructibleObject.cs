@@ -16,11 +16,12 @@ public abstract class DestructibleObject : MonoBehaviour
 
     public void Collide(int attackPower)
     {
-        if (!isHit)
-        {
-            GetHit(attackPower);
-        }
-        isHit = true;     
+        GetHit(attackPower);
+        //if (!isHit)
+        //{
+        //    GetHit(attackPower);
+        //}
+        //isHit = true;     
     }
 
     public virtual void GetHit(int attackPower)
@@ -46,15 +47,16 @@ public abstract class DestructibleObject : MonoBehaviour
     public virtual void Animate()
     {
         xPos = transform.position.x;
+        amount = 0.08f;
         isAnimating = true;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (isAnimating)
         {
             float xVal = xPos + Mathf.Sin(Time.time * speed) * amount;
-            amount = amount / 1.001f;
+            amount = amount / 1.01f;
 
             if (amount < 0.05)
             {
@@ -62,7 +64,24 @@ public abstract class DestructibleObject : MonoBehaviour
                 isHit = false;
                 isAnimating = false;
             }
-            transform.position = new Vector3(xVal, transform.position.y, transform.position.z); 
+            transform.position = new Vector3(xVal, transform.position.y, transform.position.z);
         }
+    }
+
+    public void Update()
+    {
+        //if (isAnimating)
+        //{
+        //    float xVal = xPos + Mathf.Sin(Time.time * speed) * amount;
+        //    amount = amount / 1.001f;
+
+        //    if (amount < 0.05)
+        //    {
+        //        transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+        //        isHit = false;
+        //        isAnimating = false;
+        //    }
+        //    transform.position = new Vector3(xVal, transform.position.y, transform.position.z); 
+        //}
     }
 }

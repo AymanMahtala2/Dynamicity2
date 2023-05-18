@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class DestructibleObject : MonoBehaviour
 {
+    public ItemObject droppable;
     public int health;
 
     protected float speed = 23f;
@@ -40,7 +41,23 @@ public abstract class DestructibleObject : MonoBehaviour
     {
         Debug.Log("dead");
         GetComponent<SpriteRenderer>().enabled = false;
+        DropItem();
         Destroy(this);
+    }
+
+    public void DropItem()
+    {
+        if (droppable != null)
+        {
+            Debug.Log("dropping item");
+            ItemObject item = Instantiate(droppable);
+            item.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            item.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, 3, 0), ForceMode2D.Impulse);
+
+        } else
+        {
+            Debug.Log("no droppable assigned");
+        }
     }
 
     public virtual void Animate()

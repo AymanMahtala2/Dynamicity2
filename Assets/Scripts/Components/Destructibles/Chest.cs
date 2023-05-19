@@ -6,18 +6,15 @@ public class Chest : DestructibleObject
 {
     public Animator animator;
 
+    void Start()
+    {
+        spawnHeight = 0.5f;
+    }
 
     public override void Die()
     {
-        Debug.Log("open itt");
         animator.SetBool("PlayOpen", true);
         isHit = true;
     }
 
-    //public override void Die()
-    //{
-    //    Debug.Log("im dead");
-    //    animator.SetTrigger("OpenIt");
-    //    //animator.ResetTrigger("OpenIt");
-    //}
 }

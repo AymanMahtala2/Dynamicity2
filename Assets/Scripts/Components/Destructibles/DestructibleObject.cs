@@ -7,13 +7,23 @@ public abstract class DestructibleObject : MonoBehaviour
     public ItemObject droppable;
     public int health;
 
-    protected float speed = 23f;
-    protected float amount = 0.07f;
+    //shaking object
+    protected float defaultSineWidth =  0.07f;
+    protected float sineSpeed =         23f;
+    protected float sineFrequency =     1.01f;
+    protected float sineCutOff =        0.05f;
+    protected float spawnHeight =       1;
+
+    protected float xPos;
     protected bool isHit = false;
 
     private bool isAnimating = false;
-    protected float xPos;
+    private float sineWidth;
 
+    void Start()
+    {
+        sineWidth = defaultSineWidth;
+    }
 
     public void Collide(int attackPower)
     {
@@ -27,7 +37,6 @@ public abstract class DestructibleObject : MonoBehaviour
     public virtual void GetHit(int attackPower)
     {
         health = health - attackPower;
-        Debug.Log("health: " + health);
         if (health <= 0)
         {
             Die();
@@ -39,7 +48,6 @@ public abstract class DestructibleObject : MonoBehaviour
 
     public virtual void Die()
     {
-        Debug.Log("dead");
         GetComponent<SpriteRenderer>().enabled = false;
         DropItem();
         Destroy(this);
@@ -49,21 +57,20 @@ public abstract class DestructibleObject : MonoBehaviour
     {
         if (droppable != null)
         {
-            Debug.Log("dropping item");
             ItemObject item = Instantiate(droppable);
-            item.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            item.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);
             item.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, 3, 0), ForceMode2D.Impulse);
 
         } else
         {
-            Debug.Log("no droppable assigned");
+            Debug.Log("DestructibleObject: no droppable assigned");
         }
     }
 
     public virtual void Animate()
     {
         xPos = transform.position.x;
-        amount = 0.07f;
+        sineWidth = defaultSineWidth;
         isAnimating = true;
     }
 
@@ -71,10 +78,10 @@ public abstract class DestructibleObject : MonoBehaviour
     {
         if (isAnimating)
         {
-            float xVal = xPos + Mathf.Sin(Time.time * speed) * amount;
-            amount = amount / 1.01f;
+            float xVal = xPos + Mathf.Sin(Time.time * sineSpeed) * sineWidth;
+            sineWidth = sineWidth / sineFrequency;
 
-            if (amount < 0.05)
+            if (sineWidth < sineCutOff)
             {
                 transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
                 isHit = false;

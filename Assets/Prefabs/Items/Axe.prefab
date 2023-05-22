@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 199707948803271342}
   - component: {fileID: 199707948803271343}
-  - component: {fileID: 199707948803271336}
   - component: {fileID: 5178241032444168206}
+  - component: {fileID: 199707948803271336}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &199707948803271336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199707948803271337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed0e0ab38198b0042b936b46e15eb656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: feebc403ee2587a44bf6db37be8e97e1, type: 2}
 --- !u!61 &5178241032444168206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.56, y: 0.91}
   m_EdgeRadius: 0
+--- !u!114 &199707948803271336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199707948803271337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0e0ab38198b0042b936b46e15eb656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: feebc403ee2587a44bf6db37be8e97e1, type: 2}

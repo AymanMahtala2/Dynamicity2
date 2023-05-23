@@ -9,7 +9,7 @@ public class NotificationController : MonoBehaviour
 
     public Transform content;
 
-    public GameObject inventoryItem;
+    public GameObject notificationItem;
 
     private void Start()
     {
@@ -23,12 +23,13 @@ public class NotificationController : MonoBehaviour
 
     public void Add(ItemData itemData)
     {
-        GameObject obj = Instantiate(inventoryItem, content);
+        string newString = "+ ";
+        GameObject obj = Instantiate(notificationItem, content);
         var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
         //var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
         //var itemAmount = obj.transform.Find("ItemAmount").GetComponent<TextMeshProUGUI>();
 
-        itemName.text = "hoi";
-        Debug.Log("say");
+        newString += itemData.displayName;
+        itemName.text = newString;
     }
 }

@@ -9,13 +9,21 @@ public class ItemObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
+        {
             Pickup();
+            ShowItemNotification();
+        }
     }
 
-    void Pickup()
+    private void Pickup()
     {
         InventorySystem.instance.Add(itemData);
         Destroy(gameObject);
+    }
+
+    private void ShowItemNotification()
+    {
+        NotificationController.instance.Add(itemData);
     }
 
     public void UseItem()

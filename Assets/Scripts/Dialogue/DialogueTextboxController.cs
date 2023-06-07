@@ -51,9 +51,21 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
 
     private void OnDialogueNodeStart(DialogueNode node)
     {
+
+        if(PlayerController.instance.transform.position.x < PlayerController.instance.di.transform.position.x)
+        {
+            leftOfPlayer = false;
+        } else
+        {
+            leftOfPlayer = true;
+        }
+
         if(leftOfPlayer)
         {
-            transform.position = new Vector3(400, 850);
+            transform.position = new Vector3(420, 830);
+        } else
+        {
+            transform.position = new Vector3(1500, 830);
         }
         gameObject.SetActive(true);
 
@@ -105,6 +117,10 @@ public class DialogueTextboxController : MonoBehaviour, DialogueNodeVisitor
         if(leftOfPlayer)
         {
             _ChoicesBoxTransform.position = new Vector3(1400, 750);
+        }
+        else
+        {
+            _ChoicesBoxTransform.position = new Vector3(570, 750);
         }
         _ChoicesBoxTransform.gameObject.SetActive(true);
         int i = 0;

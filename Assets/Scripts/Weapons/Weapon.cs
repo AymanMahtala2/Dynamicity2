@@ -16,13 +16,11 @@ public abstract class Weapon : MonoBehaviour
     protected float DisableTimer;
     public virtual void Attack()
     {
-        StartCoroutine(Colliding());
-    }
-    protected IEnumerator Colliding()
-    {
-        yield return new WaitForSeconds(EnableTimer);
         collider.enabled = true;
-        yield return new WaitForSeconds(DisableTimer);
+    }
+
+    public void EndAttack()
+    {
         collider.enabled = false;
     }
 

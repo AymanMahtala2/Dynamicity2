@@ -13,7 +13,15 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void StartDialogue(Transform currentTalker)

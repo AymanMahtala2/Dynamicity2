@@ -39,13 +39,26 @@ public abstract class Character : MonoBehaviour
         {
             MoveCharacterInFight();
         }
-        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        //animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        if (rb.velocity.magnitude > 0.1f)
+        {
+            ChangeAnimationState("walk");
+        }
+        else
+        {
+            ChangeAnimationState("idle");
+        }
     }
 
     private void MoveCharacter()
     {
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
         Flip();
+    }
+
+    public void SetAnimationToNull()
+    {
+        currentState = "";
     }
 
     private void MoveCharacterInFight()
@@ -70,8 +83,16 @@ public abstract class Character : MonoBehaviour
     public bool attacking;
     public void Attack()
     {
+        ChangeAnimationState("attack");
+    }
+    public void AttackCollider()
+    {
         weapon.Attack();
-        animator.SetTrigger("Attack");
+    }
+    public void EndAttack()
+    {
+        weapon.EndAttack();
+        currentState = "";
     }
 
     public void Shield()
@@ -79,7 +100,7 @@ public abstract class Character : MonoBehaviour
         canMove = false;
         shield.RaiseShield();
         rb.velocity = Vector2.zero;
-        animator.SetBool("Defend", true);
+        ChangeAnimationState("shield");
         DeactivateDamage();
 
     }
@@ -88,7 +109,7 @@ public abstract class Character : MonoBehaviour
     {
         canMove = true;
         shield.LowerShield();
-        animator.SetBool("Defend", false);
+        ChangeAnimationState("shield");
         ActivateDamage();
     }
 
@@ -101,7 +122,7 @@ public abstract class Character : MonoBehaviour
     public virtual void Die()
     {
         AudioController.instance.PlaySFX(2);
-        animator.SetTrigger("Die");
+        ChangeAnimationState("die");
         dead = true;
         Destroy(GetComponent<AIEnemy>());
         Destroy(GetComponent<Collider2D>());
@@ -125,7 +146,7 @@ public abstract class Character : MonoBehaviour
                 Die();
             } else
             {
-                animator.SetTrigger("Hit");
+                ChangeAnimationState("hurt");
                 AudioController.instance.PlaySFX(0);
                 rb.AddForce(Vector2.left * knockback * 100 * faceDirection, ForceMode2D.Impulse);
             }
@@ -146,6 +167,39 @@ public abstract class Character : MonoBehaviour
     public void ActivateDamage()
     {
         canBeDamaged = true;
+    }
+    private string currentState;
+    public void ChangeAnimationState(string newState)
+    {
+        if (currentState == newState || currentState == "attack" || currentState == "hurt") return;
+
+        animator.Play(newState);
+
+        currentState = newState;
+
+
+        //if (CanInterruptAnimation(newState))
+        //{
+        //    animator.Play(newState);
+
+        //    currentState = newState;
+        //} else
+        //{
+        //    if (currentState == newState) return;
+
+        //    animator.Play(newState);
+
+        //    currentState = newState;
+        //}
+    }
+
+    private bool CanInterruptAnimation(string incomingAnimation)
+    {
+        if(incomingAnimation == "hurt" || incomingAnimation == "die")
+        {
+            return true;
+        }
+        return false;
     }
 
     protected enum State

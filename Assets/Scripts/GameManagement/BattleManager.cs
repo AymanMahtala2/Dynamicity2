@@ -21,8 +21,16 @@ public class BattleManager : MonoBehaviour
     private bool battleStarted;
     private void Start()
     {
-        instance = this;
-        currentEnemies = new List<AIEnemy>();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+            currentEnemies = new List<AIEnemy>();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void AddToListOfEnemies(AIEnemy enemy)

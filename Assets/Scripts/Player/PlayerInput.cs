@@ -11,6 +11,8 @@ public class PlayerInput : MonoBehaviour
     public bool canMove;
     public bool canAttack;
 
+    public bool journalOpen;
+
     private void Start()
     {
         instance = this;
@@ -31,25 +33,29 @@ public class PlayerInput : MonoBehaviour
         {
             PlayerController.instance.Attack();
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && canMove)
         {
             PlayerController.instance.Shield();
         }
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && canMove)
         {
             PlayerController.instance.LowerShield();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && canMove)
         {
             PlayerController.instance.Talk();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
         {
             PlayerController.instance.Jump();
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
             PlayerController.instance.OpenInventory();
+        }
+        if (Input.GetKeyDown(KeyCode.J) && PlayerController.instance.hasJournal)
+        {
+            PlayerController.instance.OpenJournal();
         }
     }
 

@@ -13,6 +13,11 @@ public class DialogueChoiceController : MonoBehaviour
 
     private DialogueNode _ChoiceNextNode;
 
+    public void ChangeDialogueChannel(DialogueChannel channel)
+    {
+        _DialogueChannel = channel;
+    }
+
     public DialogueChoice Choice
     {
         set

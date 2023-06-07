@@ -9,6 +9,8 @@ TagManager:
   - Shield
   - NPC
   - Dialogue
+  - Confiner
+  - NormalCam
   layers:
   - Default
   - TransparentFX

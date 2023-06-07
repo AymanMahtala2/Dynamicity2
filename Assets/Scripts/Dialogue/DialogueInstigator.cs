@@ -14,10 +14,15 @@ public class DialogueInstigator : MonoBehaviour
     [SerializeField]
     private Dialogue dialogue;
 
+    [SerializeField]
+    private Dialogue dialogueSecond;
+
     public bool startsImmediately;
 
     [SerializeField]
     private Character character;
+
+    public bool talkedToOnce;
 
     private void Awake()
     {
@@ -47,30 +52,33 @@ public class DialogueInstigator : MonoBehaviour
 
     private void OnDialogueStart(Dialogue dialogue)
     {
-        DialogueManager.instance.StartDialogue(transform);
-        PlayerInput.instance.CannotMoveOrAttack();
-        vcam.Priority = 12;
-        _DialogueChannel.RaiseDialogueStart(dialogue);
+        if(this.dialogue == dialogue)
+        {
+            DialogueManager.instance.StartDialogue(character.transform);
+            PlayerInput.instance.CannotMoveOrAttack();
+            PlayerController.instance.SwitchToTalkingCam(true);
+            _DialogueChannel.RaiseDialogueStart(dialogue);
+        }
     }
-
+    public bool startFight = false;
     private void OnDialogueEnd(Dialogue dialogue)
     {
-        _DialogueChannel.RaiseDialogueEnd(dialogue);
-        PlayerInput.instance.CanMoveOrAttack();
-        DialogueManager.instance.StopDialogue(transform);
-        vcam.Priority = 1;
-    }
+        if(this.dialogue == dialogue)
+        {
+            _DialogueChannel.RaiseDialogueEnd(dialogue);
+            PlayerInput.instance.CanMoveOrAttack();
+            DialogueManager.instance.StopDialogue(character.transform);
+            PlayerController.instance.SwitchToTalkingCam(false);
+            startsImmediately = false;
+            talkedToOnce = true;
+            this.dialogue = dialogueSecond;
 
-    //private bool inRange;
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.tag == "Player")
-    //    {
-    //        inRange = true;
-    //    }
-    //}
-    [SerializeField]
-    private CinemachineVirtualCamera vcam;
+            if (startFight)
+            {
+                PlayerController.instance.di.transform.parent.GetComponent<Character>().FightingMode();
+            }
+        }
+    }
 
     public void StartTalking()
     {

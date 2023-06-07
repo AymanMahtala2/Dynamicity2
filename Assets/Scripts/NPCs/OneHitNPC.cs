@@ -8,5 +8,9 @@ public class OneHitNPC : Character
     {
         health = 10;
         speed = 2;
+        if (GameManager.instance.NPCGuide[NPCNumber] == GameManager.State.Dead)
+        {
+            Destroy(gameObject);
+        }
     }
 }

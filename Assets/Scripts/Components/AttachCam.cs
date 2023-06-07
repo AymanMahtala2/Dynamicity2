@@ -7,7 +7,8 @@ public class AttachCam : MonoBehaviour
 {
     void Start()
     {
-        Invoke("AttachTheCam", 0.25f);
+        AttachTheCam();
+        //Invoke("AttachTheCam", 0.25f);
     }
 
     private void AttachTheCam()

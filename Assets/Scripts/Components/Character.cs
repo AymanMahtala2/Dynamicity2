@@ -30,8 +30,11 @@ public abstract class Character : MonoBehaviour
 
     private bool canMove = true;
     private bool canBeDamaged = true;
+
+    public int NPCNumber;
     private void FixedUpdate()
     {
+
         if (state == State.Idle)
         {
             MoveCharacter();
@@ -127,6 +130,7 @@ public abstract class Character : MonoBehaviour
         Destroy(GetComponent<AIEnemy>());
         Destroy(GetComponent<Collider2D>());
         rb.bodyType = RigidbodyType2D.Static;
+        GameManager.instance.LogDeath(NPCNumber, GameManager.State.Dead);
         BattleManager.instance.KilledEnemy();
         //collider false
         Destroy(this);

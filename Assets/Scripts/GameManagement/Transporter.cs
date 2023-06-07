@@ -14,16 +14,26 @@ public class Transporter : MonoBehaviour
     [SerializeField]
     private bool transportImmediately;
 
+    [SerializeField]
+    private bool locked;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
-            playerStorage.initialValue = playerPosition;
-            PlayerController.instance.sceneName = sceneName;
-            if(transportImmediately)
+            if(locked)
             {
-                PlayerController.instance.Transport();
+                //audio of locked door
+            } else
+            {
+                playerStorage.initialValue = playerPosition;
+                PlayerController.instance.sceneName = sceneName;
+                if (transportImmediately)
+                {
+                    PlayerController.instance.Transport();
+                }
             }
+
         }
     }
 

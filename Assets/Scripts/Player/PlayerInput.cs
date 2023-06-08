@@ -51,7 +51,6 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("open");
             PlayerController.instance.OpenInventory();
         }
         if (Input.GetKeyDown(KeyCode.J) && PlayerController.instance.hasJournal)

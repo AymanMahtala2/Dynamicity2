@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
             NPCGuide[5] = State.Neutral;
             NPCGuide[6] = State.Neutral;
             NPCGuide[7] = State.Neutral;
+            NPCGuide[8] = State.Neutral;
 
             QuestGuide[0] = QuestState.Started;
             QuestGuide[1] = QuestState.NotStarted;

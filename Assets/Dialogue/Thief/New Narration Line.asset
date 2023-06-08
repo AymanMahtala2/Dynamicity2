@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbd48339c494af46a64316ab8271310, type: 3}
+  m_Name: New Narration Line
+  m_EditorClassIdentifier: 
+  _Speaker: {fileID: 11400000, guid: 04372dc6135deb7478952bed964b9443, type: 2}
+  _Text: I was supposed to be a major character. Instead, I'm just someone you kill
+    to advance the main quest.

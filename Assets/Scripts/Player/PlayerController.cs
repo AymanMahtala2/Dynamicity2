@@ -14,7 +14,7 @@ public class PlayerController : Character
 
     public GameObject journal;
 
-    public string playerName = "Ayman";
+    public string playerName = "Knight";
 
     public VectorValue startingPosition;
 

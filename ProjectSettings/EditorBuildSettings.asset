@@ -15,11 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/HousesSeron/House.unity
     guid: 1c82ee134c13e5643a2dad1e6ef7d7ff
   - enabled: 1
-    path: Assets/Scenes/HousesSeron/House 1.unity
+    path: Assets/Scenes/HousesSeron/RendallHouse.unity
     guid: b674532325ae5a94d8e3473e3b5be02b
   - enabled: 1
     path: Assets/Scenes/Forengard Forest.unity
     guid: f205b6fb260b3f7419b7273f3b53d778
+  - enabled: 1
+    path: Assets/Scenes/HousesForest/HouseLeft.unity
+    guid: dfad886942cd774459a00bf87877d33b
+  - enabled: 1
+    path: Assets/Scenes/HousesForest/HouseRight.unity
+    guid: 0bb4df169f255fa43a9b2db00f9d742e
+  - enabled: 1
+    path: Assets/Scenes/HousesSeron/UpperLevelHouse.unity
+    guid: 9818ecce84a2a28459e97c30855c6cc6
   - enabled: 1
     path: Assets/Scenes/HousesSeron/House 2.unity
     guid: f57384d1577d6f646acb8bbba2a8571f

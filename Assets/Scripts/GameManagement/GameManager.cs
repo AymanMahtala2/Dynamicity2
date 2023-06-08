@@ -15,10 +15,32 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+
+            NPCGuide = new Dictionary<int, State>();
+            QuestGuide = new Dictionary<int, QuestState>();
+
+            NPCGuide[0] = State.Neutral;
+            NPCGuide[1] = State.Neutral;
+            NPCGuide[2] = State.Neutral;
+            NPCGuide[3] = State.Neutral;
+            NPCGuide[4] = State.Neutral;
+            NPCGuide[5] = State.Neutral;
+            NPCGuide[6] = State.Neutral;
+            NPCGuide[7] = State.Neutral;
+
+            QuestGuide[0] = QuestState.Started;
+            QuestGuide[1] = QuestState.NotStarted;
+            QuestGuide[2] = QuestState.NotStarted;
+            QuestGuide[2] = QuestState.NotStarted;
         } else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SaveGame()
+    {
+        PlayerPrefs.Save();
     }
 
     public void LogDeath(int NPC, State newState)
@@ -44,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public enum QuestState
     {
+        NotStarted,
         Started,
         Step1,
         Step2,

@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11070c70ea040646bf5e715025df81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppable: {fileID: 0}
+  droppable: {fileID: 7253574900678077001, guid: 9fcbab83e5f373d42b576b3188ba4a1d, type: 3}
   health: 60
   animator: {fileID: 4458885947985447573}

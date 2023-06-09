@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: health
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4458885947985447572, guid: 42033bb84c0666348936b7d9910f74d1, type: 3}
+      propertyPath: droppable
+      value: 
+      objectReference: {fileID: 6689496046988509218, guid: ed340fe3a9a6e4b4b97bbfef4a3e6739, type: 3}
     - target: {fileID: 4458885947985447573, guid: 42033bb84c0666348936b7d9910f74d1, type: 3}
       propertyPath: m_Controller
       value: 

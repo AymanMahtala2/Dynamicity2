@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008126959, y: -0.052314408}
+  m_Offset: {x: -0.02093625, y: -0.08719033}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.059371203, y: 0.19582064}
+  m_Size: {x: 1.2567778, y: 1.846614}
   m_EdgeRadius: 0
 --- !u!1 &7392030647597080057
 GameObject:
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: -1773759035514995069}
   - component: {fileID: 7253574900678077001}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: Bandage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 7392030647597080057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.164, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1706359124908252089}
@@ -135,7 +135,7 @@ SpriteRenderer:
   m_SortingLayerID: -1734668233
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300178, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 720cd1c005f7fe54fbe270433f5424aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,18 +159,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0058455765, y: -0.023382574}
+  m_Offset: {x: -0.017405033, y: -0.011757195}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.21875, y: 0.28125}
+    oldSize: {x: 3.26, y: 2.25}
     newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22874749, y: 0.3098482}
+  m_Size: {x: 3.3443294, y: 2.3559017}
   m_EdgeRadius: 0
 --- !u!50 &-1773759035514995069
 Rigidbody2D:
@@ -205,4 +205,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0e0ab38198b0042b936b46e15eb656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 7471736563c6c1b4a81d7fa469755e38, type: 2}
+  itemData: {fileID: 11400000, guid: 471dc9c280c483542b746f523fec87b9, type: 2}

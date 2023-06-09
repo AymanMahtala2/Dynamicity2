@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour
 {
     public ItemData itemData;
+    public bool isKey;
+    public bool isJournal;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,6 +17,15 @@ public class ItemObject : MonoBehaviour
     void Pickup()
     {
         InventorySystem.instance.Add(itemData);
+        if(isKey)
+        {
+            GameManager.instance.OpenDoor();
+            GameManager.instance.LogQuest(1, GameManager.QuestState.Succeeded);
+        }
+        if (isJournal)
+        {
+            PlayerController.instance.hasJournal = true;
+        }
         Destroy(gameObject);
     }
 

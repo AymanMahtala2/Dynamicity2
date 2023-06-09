@@ -19254,11 +19254,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f98a3ddb707654f9fa35039e3c7892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DialogueChannel: {fileID: 0}
-  dialogue: {fileID: 0}
-  dialogueSecond: {fileID: 0}
+  _DialogueChannel: {fileID: 11400000, guid: c477a56d497dd714584062ec5dfd5020, type: 2}
+  dialogue: {fileID: 11400000, guid: 150273e31e649eb4f8203a743d19ae80, type: 2}
+  dialogueSecond: {fileID: 11400000, guid: 150273e31e649eb4f8203a743d19ae80, type: 2}
   startsImmediately: 0
-  character: {fileID: 0}
+  character: {fileID: 5996320243622779426}
   talkedToOnce: 0
   startFight: 0
 --- !u!1 &1887731993
@@ -19968,7 +19968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Forengard Forest
-  playerPosition: {x: 40.7, y: 0.7}
+  playerPosition: {x: 53.7, y: 0.7}
   playerStorage: {fileID: 11400000, guid: c428673787ad1094ea35226532ed16ae, type: 2}
   transportImmediately: 0
   locked: 0
@@ -22404,10 +22404,13 @@ MonoBehaviour:
   weapon: {fileID: 0}
   shield: {fileID: 0}
   dead: 0
-  di: {fileID: 0}
+  di: {fileID: 1871731397}
   NPCNumber: 3
+  isDrunkMan: 0
+  dialogueDrunkCompleted: {fileID: 0}
   faceDirection: 0
   attacking: 0
+  currentState: 
 --- !u!61 &5996320243622779427
 BoxCollider2D:
   m_ObjectHideFlags: 0

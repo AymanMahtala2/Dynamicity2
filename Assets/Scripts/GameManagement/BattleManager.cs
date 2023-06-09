@@ -64,11 +64,12 @@ public class BattleManager : MonoBehaviour
         vcam.Priority = 1;
         PlayerController.instance.IdleMode();
         AudioController.instance.PlayMusic(0);
+        Invoke("SetAnimationToNullBackup", 1.5f);
     }
 
 
-    public void Yield()
+    public void SetAnimationToNullBackup()
     {
-
+        PlayerController.instance.SetAnimationToNull();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static GameManager;
 
 public class DialogueInstigator : MonoBehaviour
 {
@@ -12,10 +13,10 @@ public class DialogueInstigator : MonoBehaviour
     private DialogueSequencer _DialogueSequencer;
 
     [SerializeField]
-    private Dialogue dialogue;
+    public Dialogue dialogue;
 
     [SerializeField]
-    private Dialogue dialogueSecond;
+    public Dialogue dialogueSecond;
 
     public bool startsImmediately;
 
@@ -61,6 +62,7 @@ public class DialogueInstigator : MonoBehaviour
         }
     }
     public bool startFight = false;
+    public bool saveMan;
     private void OnDialogueEnd(Dialogue dialogue)
     {
         if(this.dialogue == dialogue)
@@ -77,7 +79,29 @@ public class DialogueInstigator : MonoBehaviour
             {
                 PlayerController.instance.di.transform.parent.GetComponent<Character>().FightingMode();
             }
+
+            if(dialogue.whichQuest != -1)
+            {
+                GameManager.instance.LogQuest(dialogue.whichQuest, dialogue.whichState);
+            }
+
+            if(saveMan)
+            {
+                GameManager.instance.SaveGame();
+            }
+
+            Debug.Log("state: " + GameManager.instance.QuestGuide[2]);
+
+            if(dialogue.completeGame)
+            {
+                EndGame();
+            }
         }
+    }
+
+    public void EndGame()
+    {
+
     }
 
     public void StartTalking()

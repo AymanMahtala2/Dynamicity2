@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Line 6
   m_EditorClassIdentifier: 
   _Speaker: {fileID: 11400000, guid: 88c00cfb80b7c3d4e926525a42679af3, type: 2}
-  _Text: ...there's still a thief active in town. Besides, what has Lorin done for
-    us except for stabbing us in the back during the battle of Castonia?
+  _Text: Tell you what, if you can deal with the thief, I will see what I can do.

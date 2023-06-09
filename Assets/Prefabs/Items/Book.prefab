@@ -206,3 +206,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 48a04c736ba6e1e41a170b599af990dc, type: 2}
+  isKey: 0
+  isJournal: 1

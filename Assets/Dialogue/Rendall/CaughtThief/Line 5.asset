@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Line 5
   m_EditorClassIdentifier: 
   _Speaker: {fileID: 11400000, guid: 88c00cfb80b7c3d4e926525a42679af3, type: 2}
-  _Text: As for your reward, an army will be sent to Lorin. Thank you for your service.
+  _Text: Well, we have our own problems. Citizens have reported their valuables being
+    stolen.

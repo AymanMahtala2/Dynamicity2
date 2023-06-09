@@ -32,9 +32,46 @@ public abstract class Character : MonoBehaviour
     private bool canBeDamaged = true;
 
     public int NPCNumber;
+
+    public bool isDrunkMan;
+    public Dialogue dialogueDrunkCompleted;
+
+    public bool Rendall;
+    public Dialogue dialogueKilledThiefNoStartQuest;
+    public Dialogue dialogueKilledThief;
+
+    protected void Start()
+    {
+        if (isDrunkMan)
+        {
+            GameManager.instance.drunkman = this;
+            GameManager.instance.dialogueDrunkCompleted = dialogueDrunkCompleted;
+        }
+        if (Rendall)
+        {
+            GameManager.instance.Rendall = this;
+            GameManager.instance.dialogueKilledThief = dialogueKilledThief;
+            GameManager.instance.dialogueKilledThiefNoStartQuest = dialogueKilledThiefNoStartQuest;
+            Debug.Log("here");
+            if (GameManager.instance.QuestGuide[2] == GameManager.QuestState.SucceededWithoutStarting)
+            {
+                di.dialogue = dialogueKilledThiefNoStartQuest;
+                Debug.Log("here2");
+
+            }
+            else if (GameManager.instance.QuestGuide[2] == GameManager.QuestState.Step2)
+            {
+                di.dialogue = dialogueKilledThief;
+                Debug.Log("here3");
+
+            }
+
+        }
+    }
+
+
     private void FixedUpdate()
     {
-
         if (state == State.Idle)
         {
             MoveCharacter();
@@ -91,6 +128,7 @@ public abstract class Character : MonoBehaviour
     public void AttackCollider()
     {
         weapon.Attack();
+        Invoke("SetAnimationToNull", 1);
     }
     public void EndAttack()
     {
@@ -131,6 +169,7 @@ public abstract class Character : MonoBehaviour
         Destroy(GetComponent<Collider2D>());
         rb.bodyType = RigidbodyType2D.Static;
         GameManager.instance.LogDeath(NPCNumber, GameManager.State.Dead);
+        Destroy(di.gameObject);
         BattleManager.instance.KilledEnemy();
         //collider false
         Destroy(this);
@@ -172,10 +211,20 @@ public abstract class Character : MonoBehaviour
     {
         canBeDamaged = true;
     }
-    private string currentState;
+    public string currentState;
     public void ChangeAnimationState(string newState)
     {
-        if (currentState == newState || currentState == "attack" || currentState == "hurt") return;
+        if(newState == "die" || newState == "")
+        {
+            animator.Play(newState);
+
+            currentState = newState;
+        }
+
+        if (currentState == newState || currentState == "attack" || currentState == "hurt")
+        {
+            return;
+        }
 
         animator.Play(newState);
 

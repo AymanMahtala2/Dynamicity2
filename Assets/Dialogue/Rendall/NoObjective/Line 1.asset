@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Line 1
   m_EditorClassIdentifier: 
   _Speaker: {fileID: 11400000, guid: 88c00cfb80b7c3d4e926525a42679af3, type: 2}
-  _Text: Lorin is under attack? Hmm...
+  _Text: Yes, I'm Rendall.

@@ -117,6 +117,7 @@ public class PlayerController : Character
 
     public void IdleMode()
     {
+        SetAnimationToNull();
         state = State.Idle;
     }
 

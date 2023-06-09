@@ -14772,6 +14772,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7904116929579388258, guid: 23a187bc151acdc47966b35440fc3afe, type: 3}
+      propertyPath: sceneName
+      value: Seron
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904116929579388258, guid: 23a187bc151acdc47966b35440fc3afe, type: 3}
       propertyPath: playerPosition.x
       value: 33
       objectReference: {fileID: 0}

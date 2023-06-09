@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Drunkman
   m_EditorClassIdentifier: 
   _FirstNode: {fileID: 11400000, guid: 4682d6ef4b0d0da4ca25e5ebb17c38a9, type: 2}
+  whichQuest: 1
+  whichState: 1

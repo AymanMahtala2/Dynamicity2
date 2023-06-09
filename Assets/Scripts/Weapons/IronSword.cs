@@ -10,5 +10,7 @@ public class IronSword : Weapon
         knockback = 2;
         EnableTimer = 0.2f;
         DisableTimer = 0.5f;
+
+        InvokeRepeating("EndAttack", 5, 5);
     }
 }

@@ -29,10 +29,10 @@ public class GameManager : MonoBehaviour
             NPCGuide[7] = State.Neutral;
             NPCGuide[8] = State.Neutral;
 
-            QuestGuide[0] = QuestState.Started;
-            QuestGuide[1] = QuestState.NotStarted;
-            QuestGuide[2] = QuestState.NotStarted;
-            QuestGuide[2] = QuestState.NotStarted;
+            QuestGuide[0] = QuestState.Started; //main quest
+            QuestGuide[1] = QuestState.NotStarted; //find keys
+            QuestGuide[2] = QuestState.NotStarted; //kill thief
+            QuestGuide[3] = QuestState.NotStarted;
         } else
         {
             Destroy(gameObject);
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
+        PlayerPrefs.SetInt("hasSavedGame", 1);
         PlayerPrefs.Save();
     }
 
@@ -54,7 +55,43 @@ public class GameManager : MonoBehaviour
     {
         QuestGuide[quest] = newState;
         PlayerPrefs.SetInt(quest.ToString(), (int) newState);
+    }
+    public Transporter lockedDoor;
+    public Character drunkman;
+    public Dialogue dialogueDrunkCompleted;
+    public void OpenDoor()
+    {
+        lockedDoor.locked = false;
+        drunkman.di.dialogue = dialogueDrunkCompleted;
+        drunkman.di.dialogueSecond = dialogueDrunkCompleted;
 
+    }
+
+    public Character Rendall;
+    public Dialogue dialogueKilledThiefNoStartQuest;
+    public Dialogue dialogueKilledThief;
+
+    public void QuestDeathImpact(int NPC)
+    {
+        switch(NPC)
+        {
+            case 2:
+                {
+                    QuestGuide[2] = QuestState.Failed;
+                }
+                break;
+            case 8:
+                {
+                    if (QuestGuide[2] == QuestState.NotStarted)
+                    {
+                        QuestGuide[2] = QuestState.SucceededWithoutStarting;
+                    } else if (QuestGuide[2] == QuestState.Started)
+                    {
+                        QuestGuide[2] = QuestState.Succeeded;
+                    }
+                }
+                break;
+        }
     }
 
     public enum State
@@ -69,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         NotStarted,
         Started,
-        Step1,
+        SucceededWithoutStarting,
         Step2,
         Succeeded,
         Failed

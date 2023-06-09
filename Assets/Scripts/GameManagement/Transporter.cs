@@ -14,8 +14,15 @@ public class Transporter : MonoBehaviour
     [SerializeField]
     private bool transportImmediately;
 
-    [SerializeField]
-    private bool locked;
+    public bool locked;
+
+    private void Start()
+    {
+        if(locked)
+        {
+            GameManager.instance.lockedDoor = this;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

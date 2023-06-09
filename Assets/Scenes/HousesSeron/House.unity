@@ -19999,7 +19999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Seron
-  playerPosition: {x: 27.4, y: 3}
+  playerPosition: {x: 32.4, y: -3}
   playerStorage: {fileID: 11400000, guid: c428673787ad1094ea35226532ed16ae, type: 2}
   transportImmediately: 0
   locked: 0

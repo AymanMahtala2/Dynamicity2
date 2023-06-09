@@ -26,7 +26,18 @@ public class Thief : Character
         Destroy(GetComponent<Collider2D>());
         rb.bodyType = RigidbodyType2D.Static;
         GameManager.instance.LogDeath(NPCNumber, GameManager.State.Dead);
-        GameManager.instance.LogQuest(2, GameManager.QuestState.Succeeded);
+            if(GameManager.instance.QuestGuide[2] == GameManager.QuestState.Started)
+        {
+            GameManager.instance.LogQuest(2, GameManager.QuestState.Step2);
+            Debug.Log("started");
+        }
+            else
+        {
+            GameManager.instance.LogQuest(2, GameManager.QuestState.SucceededWithoutStarting);
+            Debug.Log("succeededwithout");
+
+        }
+
         BattleManager.instance.KilledEnemy();
         //collider false
         Destroy(this);

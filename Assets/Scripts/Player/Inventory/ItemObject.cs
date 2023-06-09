@@ -10,8 +10,11 @@ public class ItemObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
+        {
             Pickup();
+            ShowItemNotification();
+        }
     }
 
     void Pickup()
@@ -27,6 +30,11 @@ public class ItemObject : MonoBehaviour
             PlayerController.instance.hasJournal = true;
         }
         Destroy(gameObject);
+    }
+
+    private void ShowItemNotification()
+    {
+        NotificationController.instance.Add(itemData);
     }
 
     public void UseItem()
